@@ -10,12 +10,15 @@ import threading
 
 
 API_TOKEN: str = '6117883523:AAExjUbE-_fbGu9XFYN17b8SPKYzcGGptww'
+
 bot: Bot = Bot(token=API_TOKEN)
 dp: Dispatcher = Dispatcher()
 
 input_queue = multiprocessing.Queue()
 output_queue = multiprocessing.Queue()
 cp = serialworker.ComPort(input_queue, output_queue)
+
+
 
 
 
@@ -57,7 +60,7 @@ async def process_start_command(message: Message):
 
 @dp.message(Command(commands=["smoke"]))
 async def process_start_command(message: Message):
-    data = cp.request("getlvlsmoke, ")
+    data = await cp.request("getlvlsmoke, ")
     await message.answer(str(data))
 
 

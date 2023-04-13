@@ -1,5 +1,11 @@
 #include <ArduinoJson.h>
 
+// пищалка - 11 цифра
+// температура - 8 пин
+// газ - 3 пин
+// аналаговые
+// co2 - A1
+// A0 - влажность
 
 
 // #define MQ2pin (0);
@@ -18,7 +24,7 @@ size_t numberOfStr = 0;  // number of valid elements in sPtr[  ]
 float get_smoke_level()
 {
   
-  int   MQ2pin  = 0;
+  int   MQ2pin  = A1;
 
   auto sensorValue = analogRead(MQ2pin); // прочитать аналоговый вход 0
   // auto value = digitalRead(2);
